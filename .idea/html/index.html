@@ -43,8 +43,25 @@
         </div>
         <div class="col-md-4">
             <div class="content-box">
-                <h2>Box 2</h2>
-                <p>Content for box 2 goes here.</p>
+                <h2>Find Hotel</h2>
+                <div>
+                    <form id="searchHotelForm" action="#" onsubmit="searchHotel()">
+                        <div>
+                            <label for="hotelId">Search here:</label>
+                        </div>
+                        <div>
+                            <input type="number" class="form-control" placeholder="Enter ID..." id="hotelId">
+                        </div>
+                        <div>
+                            <button class="btn btn-success btn-block mt-3" type="submit">Search hotel</button>
+                            <button class="btn btn-warning btn-block mt-3" onclick="clearForm()">Clear</button>
+                            <a href="allHotels.html" class="btn btn-info btn-block mt-3">Go to list</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="resultDiv d-flex justify-content-center mt-3 py-3">
+                    <div id="searchResult"></div>
+                </div>
             </div>
         </div>
         <div class="col-md-4">

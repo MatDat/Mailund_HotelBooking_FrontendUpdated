@@ -69,17 +69,13 @@ async function fetchHotelList() {
             nameCell.textContent = hotels[i].name
             rowData.appendChild(nameCell)
 
-            let streetCell = document.createElement("td")
-            streetCell.textContent = hotels[i].street
-            rowData.appendChild(streetCell)
+            let addressCell = document.createElement("td")
+            addressCell.textContent = `${hotels[i].street}, ${hotels[i].city}, ${hotels[i].country}`
+            rowData.appendChild(addressCell)
 
-            let cityCell = document.createElement("td")
-            cityCell.textContent = hotels[i].city
-            rowData.appendChild(cityCell)
-
-            let countryCell = document.createElement("td")
-            countryCell.textContent = hotels[i].country
-            rowData.appendChild(countryCell)
+            let roomCell = document.createElement("td")
+            roomCell.textContent = hotels[i].created
+            rowData.appendChild(roomCell)
 
             tableBody.appendChild(rowData)
         }
@@ -87,4 +83,49 @@ async function fetchHotelList() {
         console.error('Error fetching data:', error);
         throw error;
     }
+}async function searchHotel() {
+    event.preventDefault();
+    try {
+        const id = document.getElementById("hotelId").value;
+
+        const response = await fetch(`http://localhost:3333/findHotelById/${id}`);
+
+        if (response.status === 404) {
+            // Handle case where hotel is not found
+            const searchResult = document.getElementById("searchResult");
+            searchResult.textContent = "No hotel found";
+            return;
+        }
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+
+        const hotel = await response.json();
+        console.log(hotel);
+
+        const searchResult = document.getElementById("searchResult");
+
+        if (hotel) {
+            const resultText =  `
+                Name: ${hotel.name},
+                Address: ${hotel.street},
+                         ${hotel.city},
+                         ${hotel.zip}
+            `;
+            searchResult.textContent = resultText;
+        } else {
+            searchResult.textContent = "No hotel found";
+        }
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+}
+
+function clearForm() {
+    document.getElementById("searchHotelForm").reset();
+    let searchResult = document.getElementById("searchResult")
+    searchResult.textContent = ""
+
 }
