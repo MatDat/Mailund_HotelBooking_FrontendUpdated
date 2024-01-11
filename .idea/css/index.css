@@ -1,0 +1,14 @@
+*{
+    padding:0;
+    margin:0;
+}
+.headerContainer{
+    background-color: beige;
+    padding: 15px 30px 15px 30px;
+    border-bottom: 1px solid black;
+}
+.content-box{
+    background-color: beige;
+    padding: 15px 30px 15px 30px;
+    border: 1px solid black;
+}
