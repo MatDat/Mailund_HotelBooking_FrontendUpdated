@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body onload="fetchHotelList()">
+
+<div id="headerContent"></div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content-box">
+                <h2>All Hotels</h2>
+                <div class="listAllProductDiv py-2 px-2">
+
+                    <div class="tableDiv" style="max-height: 400px; overflow-y: auto;">
+                        <table class="table table-striped">
+                            <thead class="table-head">
+                            <th>Hotel ID</th>
+                            <th>Hotel navn</th>
+                            <th>Gade</th>
+                            <th>By</th>
+                            <th>Land</th>
+                            </thead>
+
+                            <tbody id="tableBodyListAllHotels">
+                            <!-- Your table content goes here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+</body>
+<script src="../js/index.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</html>
