@@ -1,2 +1,4 @@
-package com.example.mailund_hotelbooking_frontend.repository;public class ReservationRepo {
+package com.example.mailund_hotelbooking_frontend.repository;
+
+public interface ReservationRepo {
 }
