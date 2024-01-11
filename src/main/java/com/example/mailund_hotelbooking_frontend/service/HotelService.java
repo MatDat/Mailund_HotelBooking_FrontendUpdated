@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class HotelService {
 
@@ -13,6 +15,8 @@ public class HotelService {
     HotelRepo hotelRepo;
 
     public ResponseEntity<Hotel> saveHotel(Hotel hotel){
+        hotel.setCreated(LocalDateTime.now());
+        hotel.setUpdated(LocalDateTime.now());
         hotelRepo.save(hotel);
         return ResponseEntity.ok(hotel);
     }

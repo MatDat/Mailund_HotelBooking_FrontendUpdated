@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+import java.util.Set;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,6 +22,8 @@ public class Hotel {
     @Column(name = "hotel_id")
     private int hotelId;
 
+    private String name;
+
     private String street;
 
     private String city;
@@ -26,4 +31,11 @@ public class Hotel {
     private String zip;
 
     private String country;
+
+    private LocalDateTime created;
+
+    private LocalDateTime updated;
+
+    @OneToMany(mappedBy = "hotel")
+    private Set<Room> rooms;
 }
