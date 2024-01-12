@@ -71,11 +71,14 @@
                 <div class="col-12">
                     <form id="deleteForm" onsubmit="deleteHotelById()">
                         <div class="form-group">
-                            <label for="hotelId">Enter Hotel Id to be deleted:</label>
-                            <input type="number" class="form-control mb-3" id="hotelId" placeholder="Enter deletion ID..">
+                            <label for="hotelIdToDelete">Enter Hotel Id to be deleted:</label>
+                            <input type="number" class="form-control mb-3" id="hotelIdToDelete" placeholder="Enter deletion ID..">
                         </div>
                         <button class="btn btn-warning btn-block" type="submit">Slet produkt</button>
                     </form>
+                </div>
+                <div class="resultDiv d-flex justify-content-center mt-3 py-3">
+                    <div id="deleteResult"></div>
                 </div>
             </div>
         </div>

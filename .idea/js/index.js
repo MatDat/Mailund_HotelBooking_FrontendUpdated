@@ -193,3 +193,25 @@ async function editHotel() {
         console.error('Error updating product:', error);
     }
 }
+
+async function deleteHotelById(){
+    event.preventDefault()
+
+    const id = document.getElementById("hotelIdToDelete").value
+
+    try{
+        const response = await fetch(`http://localhost:3333/deleteHotel/${id}`, {
+            method: 'DELETE'
+        });
+        const deleteResult = document.getElementById("deleteResult")
+        deleteResult.textContent = "Hotel deleted with ID: " + id
+
+        if (response.ok) {
+            console.log('Hotel deleted successfully');
+        } else {
+            console.error('Error in deleting hotel');
+        }
+    } catch (error) {
+        console.error('Error occured:', error);
+    }
+}
