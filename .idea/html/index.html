@@ -54,7 +54,7 @@
                         </div>
                         <div>
                             <button class="btn btn-success btn-block mt-3" type="submit">Search hotel</button>
-                            <button class="btn btn-warning btn-block mt-3" onclick="clearForm()">Clear</button>
+                            <button class="btn btn-danger btn-block mt-3" onclick="clearForm()">Clear</button>
                             <a href="allHotels.html" class="btn btn-info btn-block mt-3">Go to list</a>
                         </div>
                     </form>
@@ -66,8 +66,17 @@
         </div>
         <div class="col-md-4">
             <div class="content-box">
-                <h2>Box 3</h2>
-                <p>Content for box 3 goes here.</p>
+                <h2>Delete Hotel</h2>
+
+                <div class="col-12">
+                    <form id="deleteForm" onsubmit="deleteHotelById()">
+                        <div class="form-group">
+                            <label for="hotelId">Enter Hotel Id to be deleted:</label>
+                            <input type="number" class="form-control mb-3" id="hotelId" placeholder="Enter deletion ID..">
+                        </div>
+                        <button class="btn btn-warning btn-block" type="submit">Slet produkt</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

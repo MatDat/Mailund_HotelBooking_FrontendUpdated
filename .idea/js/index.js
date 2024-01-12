@@ -44,6 +44,7 @@ function addHotel() {
 }
 
 let hotels = []
+
 async function fetchHotelList() {
     try {
         const response = await fetch("http://localhost:3333/getAllHotels")
@@ -83,7 +84,9 @@ async function fetchHotelList() {
         console.error('Error fetching data:', error);
         throw error;
     }
-}async function searchHotel() {
+}
+
+async function searchHotel() {
     event.preventDefault();
     try {
         const id = document.getElementById("hotelId").value;
@@ -107,7 +110,7 @@ async function fetchHotelList() {
         const searchResult = document.getElementById("searchResult");
 
         if (hotel) {
-            const resultText =  `
+            const resultText = `
                 Name: ${hotel.name},
                 Address: ${hotel.street},
                          ${hotel.city},
@@ -126,6 +129,67 @@ async function fetchHotelList() {
 function clearForm() {
     document.getElementById("searchHotelForm").reset();
     let searchResult = document.getElementById("searchResult")
-    searchResult.textContent = ""
+    searchResult.innerHTML = ""
+}
 
+async function getHotel() {
+    event.preventDefault();
+
+    const hotelId = document.getElementById("hotelId").value;
+
+    try {
+        const response = await fetch(`http://localhost:3333/findHotelById/${hotelId}`);
+
+        if (!response.ok) {
+            throw new Error('Failed to load hotel');
+        }
+
+        const hotel = await response.json();
+        console.log(hotel);
+
+        document.getElementById("name").value = hotel.name;
+        document.getElementById("street").value = hotel.street;
+        document.getElementById("city").value = hotel.city;
+        document.getElementById("zip").value = hotel.zip;
+        document.getElementById("country").value = hotel.country;
+    } catch (error) {
+        console.error('Error fetching hotel:', error);
+    }
+}
+
+async function editHotel() {
+    event.preventDefault()
+
+    let hotelId = document.getElementById("hotelId").value
+    let name = document.getElementById("name").value
+    let street = document.getElementById("street").value
+    let city = document.getElementById("city").value
+    let zip = document.getElementById("zip").value
+    let country = document.getElementById("country").value
+
+    const updatedHotel = {
+        hotelId: hotelId,
+        name: name,
+        street: street,
+        city: city,
+        zip: zip,
+        country: country
+    }
+
+    try {
+        const response = await fetch(`http://localhost:3333/editHotel`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedHotel)
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to update product');
+        }
+        alert("Hotel was updated successfully!")
+    } catch (error) {
+        console.error('Error updating product:', error);
+    }
 }

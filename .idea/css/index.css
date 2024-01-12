@@ -15,3 +15,6 @@
 .tableDiv{
     border: 1px solid black;
 }
+.table-head{
+    border-bottom: 1px solid black;
+}
