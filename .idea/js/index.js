@@ -94,7 +94,6 @@ async function searchHotel() {
         const response = await fetch(`http://localhost:3333/findHotelById/${id}`);
 
         if (response.status === 404) {
-            // Handle case where hotel is not found
             const searchResult = document.getElementById("searchResult");
             searchResult.textContent = "No hotel found";
             return;
